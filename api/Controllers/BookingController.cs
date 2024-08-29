@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using api.Data;
 using api.Dtos.Booking;
 using api.Interfaces;
 using api.Mappers;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Client;
 
 namespace api.Controllers {
     [Route("api/Booking")]
@@ -24,6 +19,7 @@ namespace api.Controllers {
             _roomRepo = roomRepo;
         }
 
+
         [HttpGet]
         public async Task<IActionResult> GetAllRoom() {
             var bookings = await _bookingRepo.GetAllAsync();
@@ -31,9 +27,9 @@ namespace api.Controllers {
             return Ok(bookingDto);
         }
 
+
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetByIdBooking([FromRoute] int id) {
-
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
 
@@ -46,7 +42,7 @@ namespace api.Controllers {
 
 
         [HttpPost]
-        public async Task<IActionResult> CreateBooking(CreateBookingDtos bookingDto) {
+        public async Task<IActionResult> CreateBooking(CreateBookingDto bookingDto) {
             var bookingModel = bookingDto.CreateBookingDto();
             await _bookingRepo.CreateAsync(bookingModel);
             return CreatedAtAction(nameof(GetByIdBooking), new {id = bookingModel.Id}, bookingModel.ToRBookingDto());
@@ -54,20 +50,17 @@ namespace api.Controllers {
 
 
         [HttpDelete("{id:int}")]
-            public async Task<IActionResult> DeleteCustomer([FromRoute] int id) {
-                
-                if(!ModelState.IsValid)
-                return BadRequest(ModelState);
+        public async Task<IActionResult> DeleteCustomer([FromRoute] int id) {
+            if(!ModelState.IsValid)
+            return BadRequest(ModelState);
 
-                var bookingDelete = await _bookingRepo.DeleteAsync(id);
-                if (bookingDelete == null) {
-                    return NotFound();
-                }
-                return NoContent();
+            var bookingDelete = await _bookingRepo.DeleteAsync(id);
+            if (bookingDelete == null) {
+                return NotFound();
+            }
+            return NoContent();
         }
-
-
-
-
     }
+
+
 }

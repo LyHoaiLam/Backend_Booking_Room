@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MyProjects\\ASP_DotNet\\BE_Hotel\\api\\api.csproj": {}
+    "C:\\Users\\Acer\\OneDrive\\Máy tính\\Test_Project_Booking_Hotel\\BE_Hotel\\api\\api.csproj": {}
   },
   "projects": {
-    "D:\\MyProjects\\ASP_DotNet\\BE_Hotel\\api\\api.csproj": {
+    "C:\\Users\\Acer\\OneDrive\\Máy tính\\Test_Project_Booking_Hotel\\BE_Hotel\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MyProjects\\ASP_DotNet\\BE_Hotel\\api\\api.csproj",
+        "projectUniqueName": "C:\\Users\\Acer\\OneDrive\\Máy tính\\Test_Project_Booking_Hotel\\BE_Hotel\\api\\api.csproj",
         "projectName": "api",
-        "projectPath": "D:\\MyProjects\\ASP_DotNet\\BE_Hotel\\api\\api.csproj",
+        "projectPath": "C:\\Users\\Acer\\OneDrive\\Máy tính\\Test_Project_Booking_Hotel\\BE_Hotel\\api\\api.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "D:\\MyProjects\\ASP_DotNet\\BE_Hotel\\api\\obj\\",
+        "outputPath": "C:\\Users\\Acer\\OneDrive\\Máy tính\\Test_Project_Booking_Hotel\\BE_Hotel\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config"

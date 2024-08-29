@@ -18,6 +18,7 @@ namespace api.Controllers {
             _bookingRepo = bookingRepo;
         }
 
+
         [HttpGet]
         public async Task<IActionResult> GetAllRoom() {
             var rooms = await _roomRepo.GetAllAsync();
@@ -28,7 +29,6 @@ namespace api.Controllers {
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetByIdRoom([FromRoute] int id) {
-
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
 
@@ -46,10 +46,6 @@ namespace api.Controllers {
             await _roomRepo.CreateAsync(roomModel);
             return CreatedAtAction(nameof(GetByIdRoom), new {id = roomModel.Id}, roomModel.ToRoomDto());
         }
-
-
-
-
 
     }
 }

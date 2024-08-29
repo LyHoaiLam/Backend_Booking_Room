@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 using System.Security.Claims;
 using System.Text;
 using api.Interfaces;
@@ -11,7 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 
 namespace api.Service {
-    public class TokenService {
+    public class TokenService : ITokenService{
         private readonly IConfiguration _config;
         private readonly SymmetricSecurityKey _key;
 
@@ -20,10 +15,10 @@ namespace api.Service {
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:SigningKey"]));
         }
 
-         public string CreateToken(AppUser user) {
+        public string CreateToken(AppUser user) {
 
             Console.WriteLine("CreateToken Folder Service - AppUser: ", user);
-            // Để nhận dạng user và thể hiển nhg gì user không thể làm trong Project của chúng ta
+
             var claims = new List<Claim> {
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim(JwtRegisteredClaimNames.GivenName, user.UserName),
@@ -47,7 +42,6 @@ namespace api.Service {
 
             var token = tokenHandler.CreateToken(tokenDescriptior);
             Console.WriteLine("token: ", token);
-
 
             return tokenHandler.WriteToken(token);
 

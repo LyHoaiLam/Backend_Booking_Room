@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace api.Dtos.Room {
     public class CreateRoomDto {
         public string Name { get; set; }
@@ -10,7 +5,5 @@ namespace api.Dtos.Room {
         public string Description { get; set; }
         public double Price { get; set; }
         public string ImageUrl { get; set; }
-
-
     }
 }

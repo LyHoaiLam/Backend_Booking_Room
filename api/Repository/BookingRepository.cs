@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using api.Data;
 using api.Dtos.Booking;
 using api.Interfaces;
@@ -47,7 +43,7 @@ namespace api.Repository {
 
 
 
-        public Task<Booking?> UpdateAsync(int id, UpdateBookingDtos updateBookingDtos) {
+        public Task<Booking?> UpdateAsync(int id, UpdateBookingDto updateBookingDtos) {
             throw new NotImplementedException();
         }
     }
