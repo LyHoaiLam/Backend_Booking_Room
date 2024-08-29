@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using api.Data;
 using api.Dtos.Room;
 using api.Interfaces;
@@ -31,7 +27,7 @@ namespace api.Controllers {
 
 
         [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetByIdBook([FromRoute] int id) {
+        public async Task<IActionResult> GetByIdRoom([FromRoute] int id) {
 
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -46,11 +42,9 @@ namespace api.Controllers {
 
         [HttpPost]
         public async Task<IActionResult> CreateRoom(CreateRoomDto roomDto) {
-            
-
             var roomModel = roomDto.CreateRoomDto();
             await _roomRepo.CreateAsync(roomModel);
-            return CreatedAtAction(nameof(GetByIdBook), new {id = roomModel.Id}, roomModel.ToRoomDto());
+            return CreatedAtAction(nameof(GetByIdRoom), new {id = roomModel.Id}, roomModel.ToRoomDto());
         }
 
 

@@ -20,30 +20,34 @@ namespace api.Repository {
             return await _context.Booking.ToListAsync();
         }
 
-
-
-
-
-
-
-        public Task<Booking?> CreateAsync(Booking booking) {
-            throw new NotImplementedException();
+        public async Task<Booking?> GetByIdAsync(int id) {
+            return await _context.Booking.FindAsync(id);
         }
 
-        public Task<Booking?> DeleteAsync(int id)
-        {
-            throw new NotImplementedException();
+        public async Task<Booking?> CreateAsync(Booking booking) {
+            await _context.Booking.AddAsync(booking);
+            await _context.SaveChangesAsync();
+            return booking;
+        }
+
+        public async Task<Booking?> DeleteAsync(int id) {
+            var bookingModel = await _context.Booking.FirstOrDefaultAsync(r => r.Id == id);
+            if(bookingModel == null) {
+                return null;
+            }
+            _context.Booking.Remove(bookingModel);
+            await _context.SaveChangesAsync();
+            return bookingModel;
         }
 
 
 
-        public Task<Booking?> GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task<Booking?> UpdateAsync(int id, UpdateBookingDtos updateBookingDtos)
-        {
+
+
+
+
+        public Task<Booking?> UpdateAsync(int id, UpdateBookingDtos updateBookingDtos) {
             throw new NotImplementedException();
         }
     }

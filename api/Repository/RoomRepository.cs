@@ -12,12 +12,11 @@ using Microsoft.EntityFrameworkCore;
 namespace api.Repository {
 
     public class RoomRepository : IRoomRepository {
+        private readonly ApplicationDBContext _context;
 
-    private readonly ApplicationDBContext _context;
-
-    public RoomRepository(ApplicationDBContext context) {
-        _context = context;
-    }
+        public RoomRepository(ApplicationDBContext context) {
+            _context = context;
+        }
 
 
         public async Task<List<Room>> GetAllAsync() {
@@ -27,6 +26,7 @@ namespace api.Repository {
         public async Task<Room?> GetByIdAsync(int id) {
             return await _context.Room.FindAsync(id);
         }
+        
         public async Task<Room?> CreateAsync(Room room) {
             await _context.Room.AddAsync(room);
             await _context.SaveChangesAsync();
@@ -42,6 +42,12 @@ namespace api.Repository {
             await _context.SaveChangesAsync();
             return roomModel;
         }
+
+
+
+
+
+
 
         public Task<Room?> UpdateAsync(int id, UpdateRoomDtos updateRoomDtos) {
             throw new NotImplementedException();

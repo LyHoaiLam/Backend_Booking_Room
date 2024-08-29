@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 
 namespace api.Dtos.Booking {
     public class UpdateBookingDtos {
-        public int Id { get; set; }
         public  int RoomId { get; set; }
         public string Username { get; set; }
         public DateTime CheckInDate { get; set; }
