@@ -1,5 +1,6 @@
 using api.Data;
 using api.Dtos.Room;
+using api.Helpers;
 using api.Interfaces;
 using api.models;
 using Microsoft.EntityFrameworkCore;
@@ -14,10 +15,21 @@ namespace api.Repository {
         }
 
 
-        public async Task<List<Room>> GetAllAsync() {
-            return await _context.Room.ToListAsync();
+        // public async Task<List<Room>> GetAllAsync() {
+        //     return await _context.Room.ToListAsync();
+        // }
+
+
+
+// Search theo Tên Vị trí
+        public async Task<List<Room>> GetAllAsync(QueryObject query) {
+            var roomQuery = _context.Room.AsQueryable();
+            if (!string.IsNullOrWhiteSpace(query.Location)) {
+                roomQuery = roomQuery.Where(s => s.Location.Contains(query.Location));
+            }
+            return await roomQuery.ToListAsync();
         }
-        
+                        
 
         public async Task<Room?> GetByIdAsync(int id) {
             return await _context.Room.FindAsync(id);

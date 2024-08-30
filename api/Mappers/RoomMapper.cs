@@ -22,6 +22,7 @@ namespace api.Mappers {
 
             return new Room {
                 Name = roomDto.Name,
+                Location = roomDto.Location,
                 Description = roomDto.Description,
                 Price = roomDto.Price,
                 ImageUrl = roomDto.ImageUrl,

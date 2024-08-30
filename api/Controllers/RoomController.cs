@@ -1,5 +1,6 @@
 using api.Data;
 using api.Dtos.Room;
+using api.Helpers;
 using api.Interfaces;
 using api.Mappers;
 using Microsoft.AspNetCore.Mvc;
@@ -20,8 +21,8 @@ namespace api.Controllers {
 
 
         [HttpGet]
-        public async Task<IActionResult> GetAllRoom() {
-            var rooms = await _roomRepo.GetAllAsync();
+        public async Task<IActionResult> GetAllRoom([FromQuery] QueryObject query) {
+            var rooms = await _roomRepo.GetAllAsync(query);
             var roomDto = rooms.Select(s => s.ToRoomDto());
             return Ok(roomDto);
         }
