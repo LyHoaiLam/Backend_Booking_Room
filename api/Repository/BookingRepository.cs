@@ -1,5 +1,6 @@
 using api.Data;
 using api.Dtos.Booking;
+using api.Helpers;
 using api.Interfaces;
 using api.models;
 using Microsoft.EntityFrameworkCore;
@@ -12,9 +13,19 @@ namespace api.Repository {
             _context = context;
         }
 
-        public async Task<List<Booking>> GetAllAsync() {
-            return await _context.Booking.ToListAsync();
+        // public async Task<List<Booking>> GetAllAsync(QueryObject query) {
+        //     return await _context.Booking.ToListAsync();
+        // }
+
+        public async Task<List<Booking>> GetAllAsync(QueryObject query) {
+            var bookingQuery = _context.Booking.AsQueryable();
+            if (query.CheckInDate.HasValue) {
+                bookingQuery = bookingQuery.Where(b => b.CheckInDate.Date == query.CheckInDate.Value.Date);
+            }
+
+            return await bookingQuery.ToListAsync();
         }
+
 
         public async Task<Booking?> GetByIdAsync(int id) {
             return await _context.Booking.FindAsync(id);

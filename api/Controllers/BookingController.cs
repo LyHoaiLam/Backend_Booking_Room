@@ -1,5 +1,6 @@
 using api.Data;
 using api.Dtos.Booking;
+using api.Helpers;
 using api.Interfaces;
 using api.Mappers;
 using Microsoft.AspNetCore.Mvc;
@@ -21,10 +22,11 @@ namespace api.Controllers {
 
 
         [HttpGet]
-        public async Task<IActionResult> GetAllRoom() {
-            var bookings = await _bookingRepo.GetAllAsync();
+        public async Task<IActionResult> GetAllRoom([FromQuery] QueryObject query) {
+            var bookings = await _bookingRepo.GetAllAsync(query);
             var bookingDto = bookings.Select(b => b.ToRBookingDto());
             return Ok(bookingDto);
+            
         }
 
 
