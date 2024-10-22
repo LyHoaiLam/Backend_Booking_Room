@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Acer\\OneDrive\\M\u00E1y t\u00EDnh\\Test_Project_Booking_Hotel\\BE_Hotel\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B7F8FC66-428F-4BB9-935C-038AE3C2E3CE}|api\\api.csproj|c:\\users\\acer\\onedrive\\m\u00E1y t\u00EDnh\\test_project_booking_hotel\\be_hotel\\api\\controllers\\roomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7F8FC66-428F-4BB9-935C-038AE3C2E3CE}|api\\api.csproj|solutionrelative:api\\controllers\\roomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RoomController.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\M\u00E1y t\u00EDnh\\Test_Project_Booking_Hotel\\BE_Hotel\\api\\Controllers\\RoomController.cs",
+              "RelativeDocumentMoniker": "api\\Controllers\\RoomController.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\M\u00E1y t\u00EDnh\\Test_Project_Booking_Hotel\\BE_Hotel\\api\\Controllers\\RoomController.cs",
+              "RelativeToolTip": "api\\Controllers\\RoomController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAUAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-05T03:23:40.119Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

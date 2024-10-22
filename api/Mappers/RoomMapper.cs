@@ -28,7 +28,16 @@ namespace api.Mappers {
                 ImageUrl = roomDto.ImageUrl,
             };
         }
-        
-    }
+
+        public static Room UpdateRoomDto(this UpdateRoomDto roomDto) {
+            return new Room {
+                Name = roomDto.Name,
+                Location = roomDto.Location,
+                Description = roomDto.Description,
+                Price = roomDto.Price,
+                ImageUrl = roomDto.ImageUrl,
+            };
+        }
+    }   
     
 }

@@ -1,4 +1,4 @@
-using api.Dtos.Booking;
+﻿using api.Dtos.Booking;
 using api.models;
 
 namespace api.Mappers {
@@ -12,10 +12,10 @@ namespace api.Mappers {
                 RoomId = bookingModel.RoomId,
                 Username = bookingModel.Username,
                 CheckInDate = bookingModel.CheckInDate,
+                CheckOutDate = bookingModel.CheckOutDate.HasValue ? bookingModel.CheckOutDate.Value : default(DateTime), // Sử dụng default(DateTime) nếu CheckOutDate là null
                 Status = bookingModel.Status,
             };
         }
-
 
         public static Booking CreateBookingDto(this CreateBookingDto bookingDto) {
             Console.WriteLine("CreateBookingDto BookingMapper.cs", bookingDto);
@@ -24,6 +24,7 @@ namespace api.Mappers {
                 RoomId = bookingDto.RoomId,
                 Username = bookingDto.Username,
                 CheckInDate = bookingDto.CheckInDate,
+                CheckOutDate= bookingDto.CheckOutDate,
                 Status = bookingDto.Status,
             };
         }

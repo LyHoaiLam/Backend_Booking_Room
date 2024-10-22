@@ -36,11 +36,8 @@ builder.Services.AddSwaggerGen(option => {
 
 builder.Services.AddControllers();
 
-
-
 builder.Services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
-builder.Services.AddDbContext<ApplicationDBContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnect")));
+builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnect")));
 builder.Services.AddCors(options => {
     options.AddPolicy("MyCors", build => {
         build.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
@@ -82,13 +79,18 @@ builder.Services.AddAuthentication(options => {
 );
 
 
+//Bỏ vào để trên điện thoại truy cập được api này, v2i kho điện thoại khồng dùng chỉ truy cập được
+//vào Frontend khi run vs Network (với địa chịa ipv4 mà thôi) nên khi gõ http://ipv4:3000 thì chỉ ra Frontned còn API thì chỉ chạy trên máy tính đang run
+//Thêm dòng này vào để khắc phục
+// builder.WebHost.UseUrls("http://192.168.68.191:5102");
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseHttpsRedirection();
+
+// app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseCors("MyCors");
 app.UseAuthorization();

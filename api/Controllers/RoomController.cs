@@ -24,6 +24,7 @@ namespace api.Controllers {
         public async Task<IActionResult> GetAllRoom([FromQuery] QueryObject query) {
             var rooms = await _roomRepo.GetAllAsync(query);
             var roomDto = rooms.Select(s => s.ToRoomDto());
+            Console.WriteLine("Controller Room");
             return Ok(roomDto);
         }
 
@@ -38,6 +39,19 @@ namespace api.Controllers {
                 return NotFound();
             }
             return Ok(room.ToRoomDto());
+        }
+
+        [HttpPut("{id:int}")]
+
+        public async Task<IActionResult> UpdateRoom([FromRoute] int id, UpdateRoomDto roomDto) {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var roomUpdate = await _roomRepo.UpdateAsync(id, roomDto);
+            if (roomUpdate == null) {
+                return NotFound();
+            }
+
+            return Ok(roomUpdate.ToRoomDto());
         }
 
 

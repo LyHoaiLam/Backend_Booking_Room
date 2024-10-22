@@ -27,6 +27,7 @@ namespace api.Repository {
             if (!string.IsNullOrWhiteSpace(query.Location)) {
                 roomQuery = roomQuery.Where(s => s.Location.Contains(query.Location));
             }
+            Console.WriteLine("Repository Room");
             return await roomQuery.ToListAsync();
         }
                         
@@ -54,8 +55,19 @@ namespace api.Repository {
         }
 
 
-        public Task<Room?> UpdateAsync(int id, UpdateRoomDtos updateRoomDtos) {
-            throw new NotImplementedException();
+        public async Task<Room?> UpdateAsync(int id, UpdateRoomDto roomDto) {
+            var roomUpdate = await _context.Room.FirstOrDefaultAsync(r => r.Id == id);
+            if (roomUpdate == null) {
+                return null;
+            }
+            roomUpdate.Name = roomDto.Name;
+            roomUpdate.Location = roomDto.Location;
+            roomUpdate.Description = roomDto.Description;
+            roomUpdate.Price = roomDto.Price;
+            roomUpdate.ImageUrl = roomDto.ImageUrl;
+
+            await _context.SaveChangesAsync();
+            return roomUpdate;
         }
     }
 }

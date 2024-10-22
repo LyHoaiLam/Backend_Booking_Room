@@ -7,7 +7,7 @@ namespace api.Interfaces {
         Task<List<Room>> GetAllAsync(QueryObject query);
         Task<Room?> GetByIdAsync(int id);
         Task<Room?> CreateAsync(Room room);
-        Task<Room?> UpdateAsync(int id, UpdateRoomDtos updateRoomDtos);
+        Task<Room?> UpdateAsync(int id, UpdateRoomDto updateRoomDtos);
         Task<Room?> DeleteAsync(int id);
     }
 }
